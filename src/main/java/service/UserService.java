@@ -1,8 +1,6 @@
 package service;
 
 import java.sql.Connection;
-import java.util.Collections;
-import java.util.List;
 
 import dao.UserDao;
 import entity.User;
@@ -23,16 +21,16 @@ public class UserService {
         return null;
     }
 
-    public List<User> find() {
-        try (Connection conn = DbUtil.getConnection()) {
-            UserDao userDao = new UserDao(conn);
-            return userDao.findAll();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return Collections.emptyList();
-    }
+//    public List<User> find() {
+//        try (Connection conn = DbUtil.getConnection()) {
+//            UserDao userDao = new UserDao(conn);
+//            return userDao.findAll();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
+//
+//        return Collections.emptyList();
+//    }
 
 }
 

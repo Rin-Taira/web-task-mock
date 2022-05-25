@@ -11,6 +11,9 @@
 <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 </head>
 <body>
+  <c:if test="${empty user}">
+  	<c:redirect url="/index.jsp" />
+  </c:if>
   <div id="app">
 
     <div class="header">
@@ -19,7 +22,7 @@
         <c:if test="${not empty user}">
     		<p class="user_name">${user.name}さん、こんにちは</p>
   		</c:if>
-        <form class="logout_form" action="logout.html" method="get">
+        <form class="logout_form" action="logout" method="get">
           <button class="logout_btn" type="submit">
             <img src="images/ドアアイコン.png">ログアウト</button>
         </form>
@@ -28,10 +31,14 @@
 
     <hr>
 
-    <div class="btn"><a class="basic_btn regist" href="insert.html">新規登録</a></div>
-    <p>成功メッセージ</p>
-    <form method="get" action="#" class="search_container">
-      <input type="text" size="25" placeholder="キーワード検索">
+    <div class="btn"><a class="basic_btn regist" href="insert.jsp">新規登録</a></div>
+    <p>
+    	<c:if test="${not empty msg}">
+    		<p class="user_name">${msg}</p>
+  		</c:if>
+    </p>
+    <form method="get" action="search" class="search_container">
+      <input type="text" name="keyword" size="25" placeholder="キーワード検索">
       <input type="submit" value="&#xf002">
     </form>
 
@@ -40,12 +47,12 @@
         <div class="order">
           <select class="base-text">
             <option>並び替え</option>
-            <option>商品ID</option>
-            <option>カテゴリ</option>
-            <option>単価：安い順</option>
-            <option>単価：高い順</option>
-            <option>登録日：古い順</option>
-            <option>登録日：新しい順</option>
+            <option value="1">商品ID</option>
+            <option value="2">カテゴリ</option>
+            <option value="3">単価：安い順</option>
+            <option value="4">単価：高い順</option>
+            <option value="5">登録日：古い順</option>
+            <option value="6">登録日：新しい順</option>
           </select>
         </div>
       <thead>
@@ -63,9 +70,9 @@
         		<td>${fn:escapeXml(product.productId)}</td>
         		<td>${fn:escapeXml(product.name)}</td>
         		<td>${fn:escapeXml(product.price)}</td>
-        		<td>${fn:escapeXml(product.category)}</td> <!-- ここを変えねば。。。 -->
-        		<td>${fn:escapeXml(product.description)}</td>
-      	</tr>
+        		<td>${fn:escapeXml(product.categoryName)}</td>
+        		<td><a class="detail_btn" href="./detail.jsp">詳細</a></td>
+      		</tr>
     	</c:forEach>
       </tbody>
     </table>

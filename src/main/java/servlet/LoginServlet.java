@@ -8,9 +8,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import entity.Category;
 import entity.Product;
 import entity.User;
+import service.CategoryService;
 import service.ProductService;
 import service.UserService;
 import util.ParamUtil;
@@ -19,7 +22,7 @@ import util.ParamUtil;
 public class LoginServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // 文字化け対策
         request.setCharacterEncoding("UTF-8");
 
@@ -39,7 +42,6 @@ public class LoginServlet extends HttpServlet {
             }
             // 次画面指定
             request.getRequestDispatcher("index.jsp").forward(request, response);
-            return;
         }
         
        
@@ -55,14 +57,22 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("index.jsp").forward(request, response);
             
         } else {
-        	// 次画面指定
-        	request.setAttribute("user", user);
+        	// user情報をセッションに保存
+        	HttpSession session = request.getSession(false);
+        	session.setAttribute("user", user);
         	
         	// 表示用のproductsデータ取得
         	ProductService productService = new ProductService();
         	List<Product> productList = productService.find();
         	
-        	request.setAttribute("productList", productList);
+        	session.setAttribute("productList", productList);
+        	
+        	// categoryデータ取得
+        	CategoryService categoryService = new CategoryService();
+        	List<Category> categoryList = categoryService.find();
+        	
+        	session.setAttribute("categoryList", categoryList);
+        	
         	
             request.getRequestDispatcher("menu.jsp").forward(request, response);
         }

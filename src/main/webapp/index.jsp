@@ -21,7 +21,7 @@
   		</c:if>
   	</div>
 
-    <form action="login" method="get">
+    <form action="login" method="post">
       <fieldset>
         <div class="cp_iptxt">
           <input class="base_input" type="text" name="loginId" placeholder="ID">
