@@ -41,7 +41,7 @@
 				<fieldset class="label-130">
 					<div>
 						<label>商品ID</label>
-						<input type="text" name="product_id" value="10001" class="base-text">
+						<input type="text" name="product_id" value="${product.productId}" class="base-text">
 						<span class="error">
 							<c:if test="${not empty msg2}">
 								<p>${msg2}</p>
@@ -50,7 +50,7 @@
 					</div>
 					<div>
 						<label>商品名</label>
-						<input type="text" name="product_name" value="マッキー(黒)" class="base-text">
+						<input type="text" name="product_name" value="${product.name}" class="base-text">
 						<span class="error">
 							<c:if test="${not empty msg3}">
 								<p>${msg3}</p>
@@ -59,7 +59,7 @@
 					</div>
 					<div>
 						<label>単価</label>
-						<input type="text" name="price" value="165" class="base-text">
+						<input type="text" name="price" value="${product.price}" class="base-text">
 						<span class="error">
 							<c:if test="${not empty msg4}">
 								<p>${msg4}</p>
@@ -69,27 +69,20 @@
 					<div>
 						<label>カテゴリ</label>
 						<select name="category" class="base-text">
-							<option value="1" selected>ペン</option>
-							<option value="2">ノート</option>
-							<option value="3">消しゴム</option>
-							<option value="4">のり</option>
+							<c:forEach var="category" items="${categoryList}">
+								<option value="${category.id}">${category.name}</option>
+							</c:forEach>
 						</select>
 					</div>
 					<div>
 						<label>商品説明</label>
 						<textarea name="description" class="base-text">
-						ゼブラ株式会社
-						線の太さ：太6.0mm、細1.5～2.0mm
+						${product.description}
             			</textarea>
 					</div>
 					<div>
 						<label>画像</label>
 						<input type="file" name="file">
-						<span class="error">
-							<c:if test="${not empty msg5}">
-								<p>${msg5}</p>
-							</c:if>
-						</span>
 					</div>
 				</fieldset>
 				<div class="btns">

@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import entity.Product;
 import service.ProductService;
@@ -25,7 +26,8 @@ public class DetailServlet extends HttpServlet {
 		ProductService productService = new ProductService();
 		Product product = productService.findById(id);
 
-		request.setAttribute("product", product);
+		HttpSession session = request.getSession(false);
+		session.setAttribute("product", product);
 
 		request.getRequestDispatcher("detail.jsp").forward(request, response);
 

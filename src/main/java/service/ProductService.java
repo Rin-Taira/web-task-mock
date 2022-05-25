@@ -64,10 +64,10 @@ public class ProductService {
 		}
 	}
 	
-	public int UpdateById(String id, String name, String price, String category, String description) {
+	public int UpdateById(String id, String name, String price, String category, String description, String nowId) {
 		try (Connection conn = DbUtil.getConnection()) {
 			ProductDao productDao = new ProductDao(conn);
-			return productDao.UpdateById(id, name, price, category, description);
+			return productDao.UpdateById(id, name, price, category, description, nowId);
 		} catch (Exception e) {
 			e.printStackTrace();
 			return -1;
