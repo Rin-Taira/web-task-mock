@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>商品登録</title>
+<title>更新</title>
 <link href="css/commons.css" rel="stylesheet">
 </head>
 <body>
@@ -32,73 +32,74 @@
 	<hr>
 
 	<div class="insert">
-		<div class="discription">
-			<p>
-				登録情報を入力してください（<span class="required"></span>は必須です）
-			</p>
-		</div>
-
 		<div class="form_body">
-			<p class="error">
-				<c:if test="${not empty msg1}">
-					<p>${msg1}</p>
-				</c:if>
-			</p>
+			<c:if test="${not empty msg}">
+				<p class="error">${msg}</p>
+			</c:if>
 
-			<form action="insert" method="get">
+			<form action="update" method="get">
 				<fieldset class="label-130">
 					<div>
-						<label class="required">商品ID</label> <input type="text"
-							name="product_id" class="base-text"> <span class="error">
+						<label>商品ID</label>
+						<input type="text" name="product_id" value="10001" class="base-text">
+						<span class="error">
 							<c:if test="${not empty msg2}">
 								<p>${msg2}</p>
 							</c:if>
 						</span>
 					</div>
 					<div>
-						<label class="required">商品名</label> <input type="text" name="name"
-							class="base-text"> <span class="error"> <c:if
-								test="${not empty msg3}">
+						<label>商品名</label>
+						<input type="text" name="product_name" value="マッキー(黒)" class="base-text">
+						<span class="error">
+							<c:if test="${not empty msg3}">
 								<p>${msg3}</p>
 							</c:if>
 						</span>
 					</div>
 					<div>
-						<label class="required">単価</label> <input type="number"
-							name="price" class="base-text"> <span class="error">
+						<label>単価</label>
+						<input type="text" name="price" value="165" class="base-text">
+						<span class="error">
 							<c:if test="${not empty msg4}">
 								<p>${msg4}</p>
 							</c:if>
 						</span>
 					</div>
-					<div class="select_block">
-						<label class="required">カテゴリ</label> <select name="category_id"
-							class="base-text">
-							<c:forEach var="category" items="${categoryList}">
-								<option value="${category.id}">${category.name}</option>
-							</c:forEach>
-						</select> <span class="error"> <c:if test="${not empty msg5}">
+					<div>
+						<label>カテゴリ</label>
+						<select name="category" class="base-text">
+							<option value="1" selected>ペン</option>
+							<option value="2">ノート</option>
+							<option value="3">消しゴム</option>
+							<option value="4">のり</option>
+						</select>
+					</div>
+					<div>
+						<label>商品説明</label>
+						<textarea name="description" class="base-text">
+						ゼブラ株式会社
+						線の太さ：太6.0mm、細1.5～2.0mm
+            			</textarea>
+					</div>
+					<div>
+						<label>画像</label>
+						<input type="file" name="file">
+						<span class="error">
+							<c:if test="${not empty msg5}">
 								<p>${msg5}</p>
 							</c:if>
 						</span>
 					</div>
-					<div>
-						<label>商品説明</label>
-						<textarea name="description" class="base-text"></textarea>
-					</div>
-					<div>
-						<label>画像</label> <input type="file" name="img_path">
-					</div>
 				</fieldset>
 				<div class="btns">
-					<button type="button" onclick="openModal()" class="basic_btn">登録</button>
-					<input type="button" onclick="location.href='./menu.jsp'"
-						value="戻る" class="cancel_btn">
+					<button type="button" onclick="openModal()" class="basic_btn">更新</button>
+					<input type="button" onclick="location.href='./menu.jsp'" value="メニューに戻る" class="cancel_btn">
 				</div>
 				<div id="modal">
-					<p class="modal_message">登録しますか？</p>
+					<p class="modal_message">更新しますか？</p>
 					<div class="btns">
-						<button type="submit" class="basic_btn">登録</button>
+						<button type="submit" class="basic_btn">更新</button>
 						<button type="button" onclick="closeModal()" class="cancel_btn">キャンセル</button>
 					</div>
 				</div>

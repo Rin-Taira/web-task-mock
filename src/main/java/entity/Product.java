@@ -4,28 +4,28 @@ import java.sql.Timestamp;
 
 public class Product {
 
-    private int productId;
-    private int categoryId;
-    private String categoryName;
-    private String name;
-    private int price;
-    private String description;
-    private Timestamp createdDate;
-    private Timestamp updatedDate;
+	private int productId;
+	private int categoryId;
+	private String categoryName;
+	private String name;
+	private int price;
+	private String description;
+	private Timestamp createdDate;
+	private Timestamp updatedDate;
 
-    public Product() {
-    }
+	public Product() {
+	}
 
-    public Product(int productId, int categoryId, String categoryName, String name, int price, String description, Timestamp createdDate, Timestamp updatedDate) {
-    	this.productId = productId;
-        this.categoryId = categoryId;
-        this.categoryName = categoryName;
-        this.name = name;
-        this.price = price;
-        this.description = description;
-        this.createdDate = createdDate;
-        this.updatedDate = updatedDate;
-    }
+	public Product(int productId, int categoryId, String categoryName, String name, int price, String description, Timestamp createdDate, Timestamp updatedDate) {
+		this.productId = productId;
+		this.categoryId = categoryId;
+		this.categoryName = categoryName;
+		this.name = name;
+		this.price = price;
+		this.description = description;
+		this.createdDate = createdDate;
+		this.updatedDate = updatedDate;
+	}
 
 	public int getProductId() {
 		return productId;
@@ -50,7 +50,7 @@ public class Product {
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
