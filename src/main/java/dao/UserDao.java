@@ -10,7 +10,6 @@ import entity.User;
 public class UserDao {
 
     private static final String SQL_SELECT_ID_AND_PASS = "SELECT * FROM users WHERE login_id = ? AND password = ?";
-    private static final String SQL_SELECT_ALL = "SELECT user_id, user_name, password FROM users";
 
     private Connection connection;
 
@@ -35,19 +34,4 @@ public class UserDao {
         }
     }
     
-//    public List<User> findAll() {
-//        List<User> list = new ArrayList<User>();
-//
-//        try (PreparedStatement stmt = connection.prepareStatement(SQL_SELECT_ALL)) {
-//            ResultSet rs = stmt.executeQuery();
-//
-//            while (rs.next()) {
-//                User u = new User(rs.getString("user_id"), rs.getString("user_name"), rs.getString("password"));
-//                list.add(u);
-//            }
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//        return list;
-//    }
 }

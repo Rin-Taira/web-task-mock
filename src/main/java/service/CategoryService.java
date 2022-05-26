@@ -21,26 +21,5 @@ public class CategoryService {
         return Collections.emptyList();
     }
 
-	public List<Category> findByKeyword(String keyword) {
-        try (Connection conn = DbUtil.getConnection()) {
-            CategoryDao categoryDao = new CategoryDao(conn);
-            return categoryDao.findByKeyword(keyword);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        return Collections.emptyList();
-    }
-//    public List<User> find() {
-//        try (Connection conn = DbUtil.getConnection()) {
-//            UserDao userDao = new UserDao(conn);
-//            return userDao.findAll();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        return Collections.emptyList();
-//    }
-
 }
 

@@ -21,16 +21,5 @@ public class UserService {
         return null;
     }
 
-//    public List<User> find() {
-//        try (Connection conn = DbUtil.getConnection()) {
-//            UserDao userDao = new UserDao(conn);
-//            return userDao.findAll();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-//
-//        return Collections.emptyList();
-//    }
-
 }
 

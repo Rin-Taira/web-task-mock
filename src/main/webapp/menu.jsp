@@ -26,7 +26,7 @@
 				<c:if test="${not empty user}">
 					<p class="user_name">${user.name}さん、こんにちは</p>
 				</c:if>
-				<form class="logout_form" action="logout" method="get">
+				<form class="logout_form" action="logout" method="post">
 					<button class="logout_btn" type="submit">
 						<img src="images/ドアアイコン.png">ログアウト
 					</button>
@@ -36,9 +36,11 @@
 
 		<hr>
 
-		<div class="btn">
-			<a class="basic_btn regist" href="insert.jsp">新規登録</a>
-		</div>
+		<c:if test="${user.role == 1}">
+			<div class="btn">
+				<a class="basic_btn regist" href="insert.jsp">新規登録</a>
+			</div>
+		</c:if>
 		<p>
 			<c:if test="${not empty msg}">
 				<p class="user_name">${msg}</p>
@@ -56,13 +58,13 @@
 			<div class="order">
 				<form method="get" action="sort">
 					<select name="sort" class="base-text" onchange="this.form.submit()">
-						<option>並び替え</option>
-						<option value="1">商品ID</option>
-						<option value="2">カテゴリ</option>
-						<option value="3">単価：安い順</option>
-						<option value="4">単価：高い順</option>
-						<option value="5">登録日：古い順</option>
-						<option value="6">登録日：新しい順</option>
+						<option selected disabled>並び替え</option>
+						<option value="1" ${s1}>商品ID</option>
+						<option value="2" ${s2}>カテゴリ</option>
+						<option value="3" ${s3}>単価：安い順</option>
+						<option value="4" ${s4}>単価：高い順</option>
+						<option value="5" ${s5}>登録日：古い順</option>
+						<option value="6" ${s6}>登録日：新しい順</option>
 					</select>
 				</form>
 			</div>
@@ -92,75 +94,5 @@
 	<footer></footer>
 
 	<script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
-	<!-- <script>
-    const vie = new Vue({
-      el: "#app",
-      data: {
-        products: [
-          {
-            ID: "10001",
-            name: "マッキー(黒)",
-            price: 160,
-            category: "筆記具",
-          },
-          {
-            ID: "10002",
-            name: "電卓",
-            price: 935,
-            category: "オフィス機器",
-          },
-          {
-            ID: "10003",
-            name: "ホッチキス芯",
-            price: 220,
-            category: "事務消耗品",
-          },
-          {
-            ID: "10004",
-            name: "Campus(5冊組)",
-            price: 220,
-            category: "紙製品",
-          },
-          {
-            ID: "10005",
-            name: "地球儀",
-            price: 160,
-            category: "雑貨",
-          },
-          {
-            ID: "10006",
-            name: "ロジカルノート(5冊組)",
-            price: 386,
-            category: "紙製品",
-          },
-          {
-            ID: "10007",
-            name: "レジスター",
-            price: 130,
-            category: "オフィス用品",
-          },
-          {
-            ID: "10008",
-            name: "カドケシ",
-            price: 150,
-            category: "筆記具",
-          },
-          {
-            ID: "10009",
-            name: "アラビックヤマト",
-            price: 200,
-            category: "事務用品",
-          },
-          {
-            ID: "10010",
-            name: "粘土",
-            price: 160,
-            category: "雑貨",
-          },
-        ]
-      }
-    })
-
-  </script> -->
 </body>
 </html>

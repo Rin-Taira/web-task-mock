@@ -73,7 +73,6 @@ public class LoginServlet extends HttpServlet {
 
 			session.setAttribute("categoryList", categoryList);
 
-
 			request.getRequestDispatcher("menu.jsp").forward(request, response);
 		}
 	}

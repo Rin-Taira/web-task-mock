@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.sql.Timestamp;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -68,7 +67,7 @@ public class InsertServlet extends HttpServlet {
 		} else {
 			// 入力されたデータをもとに insert するためのProductのインスタンス生成
 
-			Product newProduct = new Product(Integer.parseInt(productId), Integer.parseInt(categoryId), null, name, Integer.parseInt(price), description, new Timestamp(System.currentTimeMillis()), null);
+			Product newProduct = new Product(Integer.parseInt(productId), Integer.parseInt(categoryId), null, name, Integer.parseInt(price), description, null, null);
 
 			productService.insert(newProduct);
 

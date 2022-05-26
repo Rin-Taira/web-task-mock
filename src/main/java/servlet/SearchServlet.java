@@ -24,6 +24,10 @@ public class SearchServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         
         HttpSession session = request.getSession(false);
+        
+        for (int i = 1; i < 7; i++) {
+			session.removeAttribute("s" + i);
+		}
 
         // キーワード取得
         String keyword = request.getParameter("keyword");
@@ -43,6 +47,7 @@ public class SearchServlet extends HttpServlet {
         	}
         }
         
+        session.setAttribute("s", "selected");
         session.setAttribute("productList", productList);
         
         request.getRequestDispatcher("menu.jsp").forward(request, response);
