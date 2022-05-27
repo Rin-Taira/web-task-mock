@@ -42,34 +42,30 @@ public class SortServlet extends HttpServlet {
 		switch (sortNum) {
 		case "1":
 			Collections.sort(productList, new ProductCompareById());
-			session.setAttribute("s1", "selected");
 			break;
 
 		case "2":
 			Collections.sort(productList, new ProductCompareByCategory());
-			session.setAttribute("s2", "selected");
 			break;
 
 		case "3":
 			Collections.sort(productList, new ProductCompareByPrice1());
-			session.setAttribute("s3", "selected");
 			break;
 
 		case "4":
 			Collections.sort(productList, new ProductCompareByPrice2());
-			session.setAttribute("s4", "selected");
 			break;
 
 		case "5":
 			Collections.sort(productList, new ProductCompareByDate1());
-			session.setAttribute("s5", "selected");
 			break;
 
 		case "6":
 			Collections.sort(productList, new ProductCompareByDate2());
-			session.setAttribute("s6", "selected");
 			break;
 		}
+		
+		session.setAttribute("s" + sortNum, "selected");
 
 		session.setAttribute("productList", productList);
 
